@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css%}
+<style>
+ body {
+    background: rgb(4, 51, 0);
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8;
+}
+
+.profile-button {
+    background: limegreen;
+    box-shadow: none;
+    border: none;
+}
+
+.profile-button:hover {
+    background: #00FF00;
+}
+
+.profile-button:focus {
+    background: #00FF00;
+    box-shadow: none;
+}
+
+.profile-button:active {
+    background: #00FF00;
+    box-shadow: none;
+}
+
+.back:hover {
+    color: #00FF00;
+    cursor: pointer;
+}
+
+.labels {
+    font-size: 11px;
+}
+
+.add-experience:hover {
+    background: #00FF00;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #00FF00;
+}
+
+</style>
+
+{% endblock %}
+
+{% block contenido %}
+
+
+
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+          <span class="font-weight-bold">{{ user.username }}</span>
+          <span class="text-black-50">{{ user.email }}</span>
+          <span> </span>
+        </div>
+        
+      </div>
+      <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Profile Settings</h4>
+              </div>
+              <div class="row mt-3">
+                <form method="post">
+                  {% csrf_token %}
+                  {{ form | crispy }}
+              </div>
+              <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+              </div>
+
+              <div class="mt-5 text-center">
+                <button onclick="eliminarPerfil()" class="btn btn-danger" type="submit">Eliminar Perfil</button>
+              </div>
+              
+              <div class="text-center mt-4">
+                {% if suscriptor.es_suscriptor %}
+                <form method="post" action="{% url 'cancelar_suscripcion' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger btn-lg">Cancelar Suscripción</button>
+                </form>
+                <h3 class="mt-4">Te haz Suscrito con exito!. Se ha aplicado un descuento del 5% para todas tus compras. Esta será cobrada mensualmente.</h3>
+                <h3>Descuento actual: {{ suscriptor.descuento }}%</h3>
+        
+        
+              {% endif %}
+              
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+     
+        
+         
+  
+
+
+
+{% endblock %}

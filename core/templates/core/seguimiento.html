@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css%}
+
+
+{% endblock %}
+{% block contenido %}
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Seguimiento de Envío</h1>
+
+    <div class="card">
+      <div class="card-header">
+        Estado del Envío
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Número de Seguimiento: 123456789</h5>
+        <p class="card-text">Último Estado: En tránsito</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="status-item">
+            <h6>Información de Seguimiento 1</h6>
+            <p>Fecha: 01/05/2023</p>
+            <p>Estado: En tránsito</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="status-item">
+            <h6>Información de Seguimiento 2</h6>
+            <p>Fecha: 05/05/2023</p>
+            <p>Estado: En almacén de destino</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="status-item">
+            <h6>Información de Seguimiento 3</h6>
+            <p>Fecha: 10/05/2023</p>
+            <p>Estado: Entregado</p>
+          </div>
+        </li>
+        <!-- Agrega más elementos de lista para mostrar más información de seguimiento -->
+      </ul>
+    </div>
+  </div>
+
+
+
+
+     
+        
+         
+  
+
+
+
+{% endblock %}

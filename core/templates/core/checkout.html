@@ -1,0 +1,305 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+
+{% endblock %}
+{% block contenido %}
+
+    <!-- Start Cart  -->
+    <form action="{% url 'pago' %}" method="post" >
+        {% csrf_token %}
+    <div class="cart-box-main">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="checkout-address">
+                        <div class="title-left">
+                            <h3>Dirección de facturación</h3>
+                        </div>
+                        <form class="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">Nombre *</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                    <div class="invalid-feedback"> Se requiere un nombre válido. </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName">Apellido *</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                    <div class="invalid-feedback"> Se requiere un apellido válido. </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email">Dirección de correo electrónico *</label>
+                                <input type="email" class="form-control" id="email" placeholder="">
+                                <div class="invalid-feedback"> Por favor, ingresa una dirección de correo electrónico válida para recibir actualizaciones de envío. </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address">Dirección *</label>
+                                <input type="text" class="form-control" id="address" placeholder="" required>
+                                <div class="invalid-feedback"> Por favor, ingresa tu dirección de envío. </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="country">País *</label>
+                                    <select class="wide w-100" id="country">
+                                    <option value="Choose..." data-display="Seleccionar">Seleccionar...</option>
+                                    <option value="Estados Unidos">Estados Unidos</option>
+                                    <option value="Estados Unidos">PERUUUANOOOOOO</option>
+                                    <option value="Estados Unidos">Colo colo</option>
+                                </select>
+                                    <div class="invalid-feedback"> Por favor, selecciona un país válido. </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="state">Estado *</label>
+                                    <select class="wide w-100" id="state">
+                                    <option data-display="Seleccionar">Seleccionar...</option>
+                                    <option>California</option>
+                                    <option>Tacna</option>
+                                    <option>GB</option>
+                                </select>
+                                    <div class="invalid-feedback"> Por favor, ingresa un estado válido. </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="zip">Código postal *</label>
+                                    <input type="text" class="form-control" id="zip" placeholder="" required>
+                                    <div class="invalid-feedback"> Se requiere el código postal. </div>
+                                </div>
+                            </div>
+                            <hr class="mb-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="same-address">
+                                <label class="custom-control-label" for="same-address">La dirección de envío es la misma que la dirección de facturación</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="save-info">
+                                <label class="custom-control-label" for="save-info">Guardar esta información para la próxima vez</label>
+                            </div>
+                            <hr class="mb-4">
+                            <div class="title"> <span>Pago</span> </div>
+                            <div class="d-block my-3">
+                                <div class="custom-control custom-radio">
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                    <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="debit">Tarjeta de débito</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="paypal">Paypal</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-name">Nombre en la tarjeta</label>
+                                    <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Nombre completo tal como aparece en la tarjeta</small>
+                                    <div class="invalid-feedback"> Se requiere el nombre en la tarjeta </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-number">Número de tarjeta de crédito</label>
+                                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                    <div class="invalid-feedback"> Se requiere el número de tarjeta de crédito </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration">Vencimiento</label>
+                                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                    <div class="invalid-feedback"> Se requiere la fecha de vencimiento </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration">CVV</label>
+                                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                    <div class="invalid-feedback"> Se requiere el código de seguridad </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="payment-icon">
+                                        <ul>
+                                            <li><img class="img-fluid" src="{% static 'core/images/payment-icon/1.png' %}" alt=""></li>
+                                            <li><img class="img-fluid" src="{% static 'core/images/payment-icon/2.png' %}" alt=""></li>
+                                            <li><img class="img-fluid" src="{% static 'core/images/payment-icon/3.png' %}" alt=""></li>
+                                            <li><img class="img-fluid" src="{% static 'core/images/payment-icon/5.png' %}" alt=""></li>
+                                            <li><img class="img-fluid" src="{% static 'core/images/payment-icon/7.png' %}" alt=""></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="mb-1"> </form>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="shipping-method-box">
+                                <div class="title-left">
+                                    <h3>Método de envío</h3>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="custom-control custom-radio">
+                                        <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio">
+                                        <label class="custom-control-label" for="shippingOption1">Entrega estándar</label> <span class="float-right font-weight-bold">GRATIS</span> </div>
+                                    <div class="ml-4 mb-2 small">(3-7 días hábiles)</div>
+                                    <div class="custom-control custom-radio">
+                                        <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio">
+                                        <label class="custom-control-label" for="shippingOption2">Entrega express</label> <span class="float-right font-weight-bold">$10.00</span> </div>
+                                    <div class="ml-4 mb-2 small">(2-4 días hábiles)</div>
+                                    <div class="custom-control custom-radio">
+                                        <input id="shippingOption3" name="shipping-option" class="custom-control-input" type="radio">
+                                        <label class="custom-control-label" for="shippingOption3">Entrega al siguiente día hábil</label> <span class="float-right font-weight-bold">$20.00</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="odr-box">
+                                <div class="title-left">
+                                    <h3>Carrito de compras</h3>
+                                </div>
+                                
+                                <div class="rounded p-2 bg-light">
+                                    
+                                    <div class="media mb-2 border-bottom">
+                                        {% for item in carrito %}
+                                        <div class="media-body"> <a href="{% url 'detalle' item.producto.id %}"> {{ item.producto.nombre|slice:":15" }}</a>
+                                            <div class="small text-muted">Precio: ${{ item.producto.precio|intcomma }} <span class="mx-2">|</span>Cantidad: {{ item.cantidad}} <span class="mx-2">|</span> ${{item.total|intcomma}}</div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="order-box">
+                                <div class="title-left">
+                                    <h3>Tu pedido</h3>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="font-weight-bold">Producto</div>
+                                    <div class="ml-auto font-weight-bold">Total</div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="d-flex">
+                                    <h4>Subtotal</h4>
+                                    <div class="ml-auto font-weight-bold"> ${{sub_total|intcomma}} </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>Descuento</h4>
+                                    <div class="ml-auto font-weight-bold"> ${{descuento|intcomma}} </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="d-flex">
+                                    <h4>Descuento de cupón</h4>
+                                    <div class="ml-auto font-weight-bold"> $ 10 </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>Impuestos</h4>
+                                    <div class="ml-auto font-weight-bold"> $ 2 </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>Costo de envío</h4>
+                                    <div class="ml-auto font-weight-bold"> Gratis </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex gr-total">
+                                    <h5>Total general</h5>
+                                    <div class="ml-auto h5"> ${{total_general|intcomma}} </div>
+                                </div>
+                                <hr>
+                                </div>
+                                 <p><div id="btnPaypal"></div></p>
+
+
+                                 <!--<form action="https://www.paypalobjects.com/api/checkout.js" method="post" target="_blank">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="TU_ID_DE_BOTÓN">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                  </form>-->
+                        </div>
+                        <div class="cart-and-bay-btn">
+                            
+                            <button type="submit" class="ml-auto btn hvr-hover" data-fancybox-close="" href="#">Pagar</button>
+                            <p><div id="btnPaypal"></div></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Cart -->
+
+</form>
+   
+    {% endblock %}
+    {% block js %}
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        paypal.Button.render({
+            env: 'sandbox',
+            client: {
+                sandbox: 'AS8dcTWis_OR8A23vIU-rtGMuRVErNFjLWvCmgySuiNPLmJrRRfV4ALD72MsvLu6DCBdA9XkuYz1Fn6M',
+                production: 'demo_production_client_id'
+            },
+            locale: 'es_CL',
+            style: {
+                size: 'large',
+                color: 'gold',
+                shape: 'rect',
+            },
+            commit: true,
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: '{{ valor }}',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            onAuthorize: function (data,actions) {
+                return actions.payment.execute().then(function () {
+                    Swal.fire({
+                        title: 'Confirmación',
+                        text: 'Pago realizado correctamente!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Confirmar'
+                    })
+                });	
+            },
+            onCancel(data) {
+                Swal.fire({
+                        title: 'Cancelado',
+                        text: 'El pago fué cancelado!',
+                        icon: 'error',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Confirmar'
+                    });
+            },
+            onError(data) {
+                Swal.fire({
+                        title: 'Error',
+                        text: 'Hubo un error en el pago!',
+                        icon: 'error',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Confirmar'
+                    });
+            }
+        }, '#btnPaypal');
+    </script>
+
+    {% endblock %}
