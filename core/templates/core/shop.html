@@ -1,0 +1,172 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+
+
+{% endblock %}
+{% block contenido %}
+
+
+    <!-- Start Shop Page  -->
+    
+    <div class="shop-box-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                    <div class="right-product-box">
+                        <div class="product-item-filter row">
+                            <div class="col-12 col-sm-8 text-center text-sm-left">
+                                <div class="toolbar-sorter-right">
+                                    <span>Sort by </span>
+                                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+									<option data-display="Select">Nothing</option>
+									<option value="1">Popularity</option>
+									<option value="2">High Price → High Price</option>
+									<option value="3">Low Price → High Price</option>
+									<option value="4">Best Selling</option>
+								</select>
+                                </div>
+                                <p>Showing all</p>
+                            </div>
+                            <div class="col-12 col-sm-4 text-center text-sm-right">
+
+                            </div>
+                        </div>
+
+                        <div class="product-categorie-box">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                    <div class="row">
+                                        {% for aux in listado %}
+                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                            <div class="products-single fix">
+                                                <div class="box-img-hover">
+
+                                                    {% if aux.imagen %}
+                                                    <img src="{{ aux.imagen.url }}" class="img-fluid" alt="Image">
+                                                    {% else %}
+                                                    <img src="{% static 'core/images/img-pro-01.jpg' %}" class="img-fluid" alt="Image">
+                                                    {% endif %}
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li><a href="{% url 'detalle' aux.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                            
+                                                            {% if user.is_authenticated and user.is_staff %}
+                                                            <li><a href="{% url 'update' aux.id %}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="fas fa-sync-alt"></i></a></li>
+                                                            
+                                                            <li><a onclick="eliminarProducto({{aux.id}})"  data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="fas fa-trash"></i></a></li>
+                                                            {% endif %}
+                                                            
+                                                        </ul>
+                                                        <form action="{% url 'agregar' aux.id %}" method="post">
+                                                            {% csrf_token %}
+                                                        <button type="submit" class="cart" href="" >Add to Cart</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="why-text">
+                                                    <h4>{{aux.nombre}}</h4>
+                                                    {% if aux.stock > 0 %}
+                                                    <h4>Stock: {{aux.stock}}</h4>
+                                                    {% else %}
+                                                    <h4>Stock: Producto agotado</h4>
+                                                    {% endif %}
+                                                    <h5> ${{aux.precio |intcomma}}</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+
+
+
+
+                                    </div>
+                                    {% include 'core/paginator.html' %} 
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                    <div class="product-categori">
+                        <div class="search-product">
+                            <form action="#">
+                                <input class="form-control" placeholder="Search here..." type="text">
+                                <button type="submit"> <i class="fa fa-search"></i> </button>
+                            </form>
+                        </div>
+
+                        
+
+                        <div class="filter-sidebar-left">
+
+                            <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                                <form action="{% url 'productos' %}" method="GET">
+                                    <div class="form-group">
+                                        <div class="title-left">
+                                            <h3 >Categories</h3>
+                                        </div>
+                                        <div class="input-group">
+                                            <select id="tipo" name="tipo" class="form-control">
+                                                <option value="">Todos los tipos</option>
+                                                {% for tipo in tipos_producto %}
+                                                    <option value="{{ tipo.descripcion }}" {% if tipo.descripcion == tipo_seleccionado %}selected{% endif %}>{{ tipo.descripcion }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn hvr-hover">Filtrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>  
+                                
+                            </div>
+                        </div>
+
+                        <div class="filter-sidebar">
+                            <!-- Publicidad lateral izquierda -->
+                            <div class="advertisement">
+                                <a href="https://youtu.be/5TCXBKPbmrw?t=3" target="_blank">
+                                    <img src="{% static 'core/images/publi2.gif' %}" alt="PublicidadSEBALOL" style="width: 100%; height: auto;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Shop Page -->
+
+   
+    {% endblock %}
+    {% block js %}
+    {% if messages %}
+    {% for message in messages %}
+    <script>
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        color: '#716addc',
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        })
+
+        Toast.fire({
+        icon: 'success',
+        title: 'Producto Guardado'
+        })
+    </script>
+    {% endfor %}
+    {% endif %}
+
+    {% endblock %}

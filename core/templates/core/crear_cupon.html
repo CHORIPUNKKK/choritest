@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+    <style>
+    /* Estilos personalizados */
+    .green-gardening-form {
+      background-color: #e9f3e9; /* Color de fondo verde claro jardinería */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .green-gardening-form h2 {
+      color: #587246; /* Color de texto verde oscuro */
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .green-gardening-form .form-group label {
+      color: #587246; /* Color de texto verde oscuro para las etiquetas de formulario */
+      font-weight: bold;
+    }
+
+    .green-gardening-form .form-control {
+      border-color: #587246; /* Color de borde verde oscuro para los campos de formulario */
+    }
+
+    .green-gardening-form .form-control:focus {
+      box-shadow: 0 0 0 0.2rem rgba(88, 114, 70, 0.25); /* Efecto de resaltado al enfocar los campos de formulario */
+      border-color: #587246; /* Color de borde verde oscuro para los campos de formulario enfocados */
+    }
+
+    .green-gardening-form .btn-primary {
+      background-color: #587246; /* Color de fondo verde oscuro para el botón */
+      border-color: #587246; /* Color de borde verde oscuro para el botón */
+    }
+
+    .green-gardening-form .btn-primary:hover {
+      background-color: #446634; /* Color de fondo verde más oscuro al pasar el cursor sobre el botón */
+      border-color: #446634; /* Color de borde verde más oscuro al pasar el cursor sobre el botón */
+    }
+  </style>
+{% endblock %}
+
+{% block contenido %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="green-gardening-form">
+          <h2>Agregar Cupón</h2>
+          <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Crear cupón</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'js/custom-script.js' %}"></script>
+{% endblock %}

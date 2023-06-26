@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+<style>
+    .cupones-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #E9F2E7;
+    }
+    
+    .cupones-box {
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cupon-item {
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333333;
+    }
+    
+    .cupon-descuento {
+        font-size: 16px;
+        color: #555555;
+    }
+    
+    .cupon-opciones a {
+        color: #55A849;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s;
+    }
+    
+    .cupon-opciones a:hover {
+        color: #448038;
+    }
+    
+    .empty {
+        color: #888888;
+        margin-top: 20px;
+    }
+    
+    .cupones-container img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+    
+    .cupones-container h1 {
+        font-size: 24px;
+        color: #448038;
+        margin-bottom: 10px;
+    }
+    
+    .cupones-container p {
+        font-size: 16px;
+        color: #555555;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block contenido %}
+<div class="cupones-container">
+    <div class="cupones-box">
+        <img src="{% static 'core/images/leaf.png' %}" alt="Leaf Icon">
+        <h1>Cupones disponibles</h1>
+        {% if cupones %}
+            {% for cupon in cupones %}
+                <div class="cupon-item">{{ cupon.codigo }}</div>
+                <div class="cupon-descuento">{{ cupon.descuento }}</div>
+                <div class="cupon-opciones">
+                    <a href="{% url 'actualizar_cupon' cupon.id %}">Modificar</a>
+                    <a onclick="eliminarCupones({{cupon.id}})" class="jijija">Eliminar</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty">No hay cupones disponibles.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

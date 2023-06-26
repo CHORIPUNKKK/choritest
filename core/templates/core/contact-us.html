@@ -1,0 +1,86 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #55d182;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, #24943e, #61a8e6);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, #28a745, #28a745, #a6ff00);
+    }
+    .titulon {
+  font-family: "Impact", sans-serif;
+  font-size: 75px; /* Ajusta el tamaño de fuente según tus necesidades */
+  color: #000000; /* Cambia el color de fuente según tus necesidades */
+}
+</style>
+{% endblock %}
+{% block contenido %}
+<!-- Start Contact Us  -->
+<div class="contact-box-main gradient-custom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm text-center">
+                <h1 class="div-heading display-4 titulon">Contactanos</h1>
+                <h2>¿Tienes algun problema, solicitud o duda?, rellenando este formulario podràs contactarnos y asi poder ayudarte!</h2>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <input type="name" class="form-control" id="exampleInputName" placeholder="Tu nombre completo...">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tu Correo Electronico...">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="exampleFormControlSelect1" placeholder="Servicio...">
+                            <option>Seleccionar opción...</option>
+                            <option>Dudas</option>
+                            <option>Compras</option>
+                            <option>Bugs Web</option>
+                            <option>Afiliados</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-lg btn-block">Enviar</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.4811741992135!2d151.206!3d-33.867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae5294e47e57%3A0x500eef17f136bc0!2sSydney%2C%20New%20South%20Wales%2C%20Australia!5e0!3m2!1sen!2sus!4v1623174760713!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="text-center">
+                    <h5>Address: <medium class="text-muted">P. Sherman, 42 Wallaby Way, Sydney</medium></h5>
+                <h5>Email: <medium class="text-muted">elsebasubeadiamante@seajalol.cl</medium></h5>
+                <h5>Contact: <medium class="text-muted">+56913154890 || +56942157058</medium></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Cart -->
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Show Sweet Alert
+        Swal.fire({
+            icon: 'success',
+            title: '¡Realizado!',
+            text: 'El formulario ha sido enviado.',
+            confirmButtonText: 'Aceptar'
+        });
+    });
+</script>
+{% endblock %}

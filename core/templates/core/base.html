@@ -1,0 +1,335 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'core/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'core/images/apple-touch-icon.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    
+
+
+    <!-- Enlaces a los archivos CSS -->
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/custom.css' %}">
+
+    <link rel="stylesheet" href="{% static 'core/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/animate.css' %}">
+
+
+
+    <!--[if lt IE 9]>
+      <script src="{% static https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="{% static https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block css %}
+
+
+    {% endblock %}
+
+</head>
+
+<body>
+    <!-- Start Main Top -->
+
+    <!-- End Main Top -->
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-success navbar-default bootsnav" style="background-image: linear-gradient(to right, #28a745, #28a745, #a6ff00);">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'core/images/js.png' %}" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+
+
+                        
+                        
+                        
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown">productos</a>
+                            <ul class="dropdown-menu">
+								<li><a href="{% url 'productos' %}">Productos</a></li>                          
+                                <li><a href="{% url 'seguimiento' %}">Seguimiento</a></li>
+
+                                <!--ADMIN-->
+                                {% if user.is_authenticated and user.is_staff %}
+                                <li><a href="{% url 'lista_cupones' %}">Lista Cupones</a></li>
+                                <li><a href="{% url 'crear_cupon' %}">Crear Cupones</a></li>
+                                <li><a href="{% url 'add' %}">Añadir Productos</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contactanos</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{% url 'edit' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mi Cuenta
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'edit' %}">Editar mi Perfil</a>
+                                <a class="dropdown-item" href="{% url 'historial' %}">Historial de Compras</a>
+                                <!-- Agrega aquí más elementos del menú desplegable si es necesario -->
+                            </div>
+                        </li>
+                        
+                        {% endif %}
+                    </ul>
+                </div>
+                
+                <!-- /.navbar-collapse -->
+
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <li class="side-menu">
+							
+								
+                                {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link nav-username" href="{% url 'logout' %}">
+                                        <i class="fas fa-sign-out-alt fa-lg"></i> {{ request.user.username }} 👍
+                                    </a>
+                                </li>
+                                <li class="side-menu">
+                                    <a href="{% url 'carrito' %}">
+                                        <i class="fa fa-shopping-bag animate__animated animate__bounce"></i>
+                                        <p>My Cart</p>
+                                    </a>
+                                </li>
+                               
+  
+                                {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-user-circle fa-lg"></i>
+                                </a></li>
+                                {% endif %}
+							
+						</li>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+            <div class="side">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                <li class="cart-box">
+                    <ul class="cart-list">
+                    {% if carrito %}
+                        {% for item in carrito %}
+                        <li>
+                            <a href="#" class="photo"><img src="{{ item.producto.imagen.url }}" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">{{ item.producto.nombre }} </a></h6>
+                            <p>{{ item.cantidad }} - <span class="price">${{item.total|intcomma}}</span></p>
+                        </li>
+                        {% endfor %}
+                    {% else %}    
+                        <p>No hay plata papito.</p>
+                    {% endif %}
+                        <li class="total">
+                            <a href="{% url 'carrito' %}" class="btn btn-default hvr-hover btn-cart">VER CARRITO</a>
+                            <span class="float-right"><strong>Total</strong>:${{total_general|intcomma}}</span>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+
+    {% block contenido %}
+
+    {% endblock %}
+
+
+
+
+
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Horario de atención</h3>
+                            <ul class="list-time">
+                                <li>Lunes - Viernes: 08.00 am a 05.00 pm</li>
+                                <li>Sábado: 10.00 am a 08.00 pm</li>
+                                <li>Domingo: <span>Cerrado</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Boletín informativo</h3>
+                            <form class="newsletter-box">
+                                <div class="form-group">
+                                    <input class="" type="email" name="Email" placeholder="Dirección de correo electrónico*" />
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <button class="btn hvr-hover" type="submit">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Redes sociales</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>Acerca Del Jardin Del Seajalol</h4>
+                            <p>Con La Giuseppe te tapizo
+                                Cara' to'a la' teni' que yo piso
+                                Voy pa' la cima porque Dio' lo quiso
+                                Con mi letra la piel le erizo
+                                Con La Giuseppe te tapizo
+                                Cara' to'a la' teni' que yo piso
+                                Voy pa' la cima porque Dio' lo quiso
+                                Con mi letra la piel le erizo
+                                Tenemo' peine transparente pa' que vean la' bala' de la Glock
+                                To'a la' Jordan retro y ropa de marca exclusiva
+                                Que no tienen en tienda en el mall
+                                Camino con puro' activo' en la materia
+                                Yo no doblo ni plancho pantalón
+                                Y aunque me pegue, me haga millonario no voy a
+                                Olvidar que soy de población</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Información</h4>
+                            <ul>
+                                <li><a href="{% url 'index' %}">Index</a></li>
+                                
+                                <li><a href="{% url 'productos' %}">Productos</a></li>                             
+                                <li><a href="{% url 'carrito' %}">Carrito</a></li>
+                                <li><a href="{% url 'pago' %}">Pago</a></li>
+                                <li><a href="{% url 'historial' %}">Historial</a></li>
+                                <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contacto</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>PERUANOOOOOOO<br>Preston Street Wichita,<br> KS 67213 </p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Teléfono: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">Todos Los Derechos Reservados. &copy; 2023 <a href="#">Seajalol</a> </p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    
+    <script src="{% static 'core/js/jquery-3.2.1.min.js' %}"></script>
+    <!-- <script src="{% static 'core/js/code.jquery.com_jquery-3.7.0.min' %}"></script>-->
+
+    <script src="{% static 'core/js/popper.min.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'core/js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap-select.js' %}"></script>
+    <script src="{% static 'core/js/inewsticker.js' %}"></script>
+    
+    
+    <!-- ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRR -->
+     <!--<script src="{% static 'core/js/bootsnav.js' %}"></script>-->
+
+    <script src="{% static 'core/js/images-loded.min.js' %}"></script>
+    <script src="{% static 'core/js/isotope.min.js' %}"></script>
+    <script src="{% static 'core/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'core/js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'core/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'core/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'core/js/custom.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'core/js/mensaje.js' %}"></script>
+
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'core/js/script.js' %}"></script>
+
+
+</body>
+
+</html>
+
+{% block js %}
+
+
+{% endblock %}

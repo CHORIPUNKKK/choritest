@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+<style>
+  .gradient-custom {
+/* fallback for old browsers */
+background: #55d182;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #24943e, #61a8e6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #28a745, #28a745, #a6ff00);
+}
+</style>
+
+<style>
+  .gradient-custom2 {
+/* fallback for old browsers */
+background: #55d182;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #24943e, #61a8e6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #28a745, #28a745, #28ec21);
+}
+</style>
+
+<style>
+  .my-form {
+    font-size: 18px;
+    font-weight: bold;
+    /* Otros estilos que desees aplicar */
+}
+
+</style>
+
+{% endblock %}
+{% block contenido %}
+<section class="vh-100 gradient-custom">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="{% static 'core/images/image.png' %}"
+            class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form method="post" class="my-form">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            
+            <div class="d-flex justify-content-center">
+              <button type="submit" value="Login" class="btn btn-success btn-block btn-lg gradient-custom2">Login</button>
+            </div>
+          
+
+            <p class="text-center text-muted mt-5 mb-0">Se kiere registrar papito? <a href="{% url 'register' %}"
+              class="fw-bold text-body"><u>Registrate aqui</u></a>
+            </p> 
+            
+  
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  {% endblock %}
+  {% block js %}
+
+
+
+  
+  {% endblock %}

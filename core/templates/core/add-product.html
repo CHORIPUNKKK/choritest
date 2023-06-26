@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+ 
+  <style>
+    /* Estilos personalizados */
+    .green-gardening-form {
+      background-color: #e9f3e9; /* Color de fondo verde claro jardinería */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .green-gardening-form table {
+      width: 100%;
+    }
+
+    .green-gardening-form .form-group label {
+      color: #587246; /* Color de texto verde oscuro para las etiquetas de formulario */
+      font-weight: bold;
+    }
+
+    .green-gardening-form .form-control {
+      border-color: #587246; /* Color de borde verde oscuro para los campos de formulario */
+    }
+
+    .green-gardening-form .form-control:focus {
+      box-shadow: 0 0 0 0.2rem rgba(88, 114, 70, 0.25); /* Efecto de resaltado al enfocar los campos de formulario */
+      border-color: #587246; /* Color de borde verde oscuro para los campos de formulario enfocados */
+    }
+
+    .green-gardening-form .btn-success {
+      background-color: #587246; /* Color de fondo verde oscuro para el botón de guardar */
+      border-color: #587246; /* Color de borde verde oscuro para el botón de guardar */
+    }
+
+    .green-gardening-form .btn-success:hover {
+      background-color: #446634; /* Color de fondo verde más oscuro al pasar el cursor sobre el botón de guardar */
+      border-color: #446634; /* Color de borde verde más oscuro al pasar el cursor sobre el botón de guardar */
+    }
+  </style>
+{% endblock %}
+
+{% block contenido %}
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="green-gardening-form">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+              {{ form| crispy }}
+            </table>
+            <input type="submit" class="btn btn-success" value="Guardar">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  {% if messages %}
+    {% for aux in messages %}
+      <script>
+        Swal.fire({
+          title: 'Confirmación',
+          text: '{{ aux }}',
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Continuar'
+        });
+      </script>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

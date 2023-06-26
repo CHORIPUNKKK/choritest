@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block css %}
+  <style>
+    /* Estilos personalizados */
+    .wishlist-box-main {
+        background: #55d182;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #24943e, #61a8e6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #28a745, #28a745, #a6ff00); /* Color de fondo verde claro jardinería */
+      padding: 50px 0;
+    }
+
+    .wishlist-box-main h2 {
+      color: #587246; /* Color de texto verde oscuro */
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .wishlist-box-main .table {
+      background-color: #fff; /* Color de fondo blanco para la tabla */
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .wishlist-box-main .table th {
+      background-color: #f1f1f1; /* Color de fondo gris claro para las cabeceras de la tabla */
+      color: #587246; /* Color de texto verde oscuro para las cabeceras de la tabla */
+      font-weight: bold;
+    }
+
+    .wishlist-box-main .table td {
+      vertical-align: middle;
+    }
+
+    .wishlist-box-main .thumbnail-img img {
+      width: 80px;
+      height: auto;
+    }
+
+    .wishlist-box-main .name-pr a {
+      color: #587246; /* Color de texto verde oscuro para los enlaces de productos */
+      font-weight: bold;
+    }
+
+    .wishlist-box-main .price-pr p {
+      color: #587246; /* Color de texto verde oscuro para los precios */
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .wishlist-box-main .quantity-box {
+      color: #587246; /* Color de texto verde oscuro para la cantidad */
+      font-weight: bold;
+    }
+
+    .wishlist-box-main .add-pr {
+      color: #587246; /* Color de texto verde oscuro para la fecha */
+      font-weight: bold;
+    }
+  </style>
+{% endblock %}
+
+{% block contenido %}
+  <div class="wishlist-box-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="table-main table-responsive">
+            <table class="table">
+                <h2 style="color: #000000;">Historial de Compras</h2>
+              <thead>
+                <tr>
+                  <th>Imagen</th>
+                  <th>Producto</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for aux in compras %}
+                  <tr>
+                    <td class="thumbnail-img">
+                      <a href="#">
+                        <img class="img-fluid" src="{{ aux.producto.imagen.url }}" alt="" />
+                      </a>
+                    </td>
+                    <td class="name-pr">
+                      <a href="#">
+                        {{ aux.producto.nombre }}
+                      </a>
+                    </td>
+                    <td class="price-pr">
+                      <p>${{ aux.total|intcomma }}</p>
+                    </td>
+                    <td class="quantity-box">{{ aux.cantidad }}</td>
+                    <td class="add-pr">
+                      {{ aux.fecha|date:"Y-m-d" }}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

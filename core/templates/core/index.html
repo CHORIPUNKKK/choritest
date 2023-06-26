@@ -1,0 +1,308 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+
+
+{% endblock %}
+{% block contenido %}
+
+
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+    <!-- Start Slider -->
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="{% static 'core/images/plantagod.png' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Bienvenidos al <br> Jardin del Seajalol</strong></h1>   
+                            <p class="m-b-40">. <br> .</p>                        
+                            <p><a class="btn hvr-hover" href="{% url 'productos' %}">Compra ahora</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'core/images/shuerk.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Bienvenidos al <br> Jardin del Seajalol</strong></h1>
+                            <p class="m-b-40">Apoya una fundacion sin fines de lucro <br> y obten un rico descuento.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'productos' %}">Compra ahora</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'core/images/jardinero23.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Bienvenidos al <br> Jardin del Seajalol</strong></h1>
+                            <p class="m-b-40">Conoce nuestros servicios.<br> </p>
+                            <p><a class="btn hvr-hover" href="{% url 'productos' %}">Compra ahora</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'core/images/gato.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Bienvenidos al <br> Jardin del Seajalol</strong></h1>
+                            <p class="m-b-40">Conoce nuestro catalogo de productos <br> y compra lo que necesites.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'productos' %}">Compra ahora</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'core/images/minecraft-3.png' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Bienvenidos al <br> Jardin del Seajalol</strong></h1>
+                            <p class="m-b-40">Contactanos <br> y enterate de nuestras novedades.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'productos' %}">Compra ahora</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+           
+        </ul>
+        <div class="slides-navigation ">
+            <a href="#" class="next"><i class="fa fa-angle-right " aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- End Slider -->
+
+
+
+    <!-- Start Categories  -->
+    <div class="categories-shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{% static 'core/images/categoria1.png' %}" alt="" />
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{% static 'core/images/categoria2.png' %}" alt="" />
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{% static 'core/images/categoria3.png' %}" alt="" />
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-10 d-flex justify-content-center align-items-center m-auto">
+        <div class="title-all text-center">
+            <h1>Navega y entérate de nuestros productos, servicios, novedades y mucho más.</h1>
+        </div>
+    </div>
+    
+    
+    
+    <!-- End Categories -->
+	
+	
+    <style>
+        .offer-box-products img {
+            border: 10px solid rgb(16, 95, 0);
+        }
+    </style>
+
+<div class="black-box">
+    <div class="box-add-products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://youtu.be/5TCXBKPbmrw?t=3" target="_blank">
+                        <div class="offer-box-products">
+                            <img class="img-fluid" src="{% static 'core/images/seajalol.png' %}" alt="" />
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="offer-box-products">
+                        <img class="img-fluid" src="{% static 'core/images/MINE.JPG' %}" alt="" />
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'edit' %}">
+                                <button class="btn btn-success">Suscribirme</button>
+                            </a>
+                        {% else %}
+                            <a class="nav-link" href="{% url 'register' %}">
+                                <button class="btn btn-success">Suscribirme</button>
+                            </a>
+                        {% endif %}
+                    </li>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+      
+
+
+    <!-- Start Products  -->
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>PRODUCTOS SOLO POR TIEMPO LIMITADO</h1>
+                        <p>aproveche antes k duerma.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="digit">
+                      <span id="days" class="number">0</span>
+                      <span class="label">Days</span>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="digit">
+                      <span id="hours" class="number">0</span>
+                      <span class="label">Hours</span>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="digit">
+                      <span id="minutes" class="number">0</span>
+                      <span class="label">Minutes</span>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="digit">
+                      <span id="seconds" class="number">0</span>
+                      <span class="label">Seconds</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <div class="row special-list">
+                {% for aux in listado %}
+                
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+
+                            {% if aux.imagen %}
+                            <img src="{{ aux.imagen.url }}" class="img-fluid" alt="Image">
+                            {% else %}
+                            <img src="{% static 'core/images/img-pro-01.jpg' %}" class="img-fluid" alt="Image">
+                            {% endif %}
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{% url 'detalle' aux.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    
+                                    {% if user.is_authenticated and user.is_staff %}
+                                    <li><a href="{% url 'update' aux.id %}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="fas fa-sync-alt"></i></a></li>
+                                    
+                                    <li><a onclick="eliminarProducto({{aux.id}})"  data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="fas fa-trash"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                                <form action="{% url 'agregar' aux.id %}" method="post">
+                                    {% csrf_token %}
+                                <button type="submit" class="cart" href="" >Add to Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>{{aux.nombre}}</h4>
+                            {% if aux.stock > 0 %}
+                            <h4>Stock: {{aux.stock}}</h4>
+                            {% else %}
+                            <h4>Stock: Producto agotado</h4>
+                            {% endif %}
+                            <h5> ${{aux.precio|intcomma}}</h5>
+                        </div>
+                    </div>
+                </div>
+             
+                {% endfor %}
+                
+            </div>
+                {% include 'core/paginator.html' %}
+        </div>
+        
+    </div>
+    <!-- End Products  -->
+
+    <!-- Start Blog  -->
+
+    <!-- End Blog  -->
+
+
+
+    {% endblock %}
+    {% block js %}
+    <script src="{% static 'core/js/mensaje.js' %}"></script>
+    
+    <script>
+        //alert('Bienvenidos a la pagina');
+        //console.log('testeando la consola');
+    </script>
+
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            color: '#716addc',
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+
+            Toast.fire({
+            icon: 'success',
+            title: 'Producto Guardado'
+            })
+        </script>
+    {% endfor %}
+    {% endif %}
+    
+    {% endblock %}
