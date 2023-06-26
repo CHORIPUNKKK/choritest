@@ -3,7 +3,11 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from django.core.paginator import Paginator
+<<<<<<< HEAD
 from django.contrib.auth.decorators import login_required, user_passes_test
+=======
+from django.contrib.auth.decorators import login_required
+>>>>>>> main
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegistrationForm
 from datetime import datetime
@@ -11,6 +15,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from .serializers import *
 import requests
+<<<<<<< HEAD
 from django.contrib.auth.models import Group
 
 
@@ -24,6 +29,8 @@ def grupo_requerido(nombre_grupo):
 
 # @grupo_requerido('Cliente')
 # @grupo_requerido('Administrador')
+=======
+>>>>>>> main
 
 
 class ProductoViewset(viewsets.ModelViewSet):
@@ -36,6 +43,7 @@ class TipoProductoViewset(viewsets.ModelViewSet):
     serializer_class = TipoProductoSerializer    
 
 
+<<<<<<< HEAD
 class CuponViewset(viewsets.ModelViewSet):
     queryset = Cupon.objects.all()
     serializer_class = CuponSerializer
@@ -45,6 +53,8 @@ class UserViewset(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
+=======
+>>>>>>> main
 
 # Create your views here.
 def index(request):
@@ -64,6 +74,7 @@ def index(request):
 
 
 def indexapi(request):
+<<<<<<< HEAD
     response = requests.get('http://127.0.0.1:8000/api/productos/')
     response2 = requests.get('https://mindicador.cl/api')
     response3 = requests.get('https://rickandmortyapi.com/api/character')
@@ -81,6 +92,33 @@ def indexapi(request):
     }
     
 
+=======
+    #solicitud api --colocar las api de imagenes y ponerlo tambn en con data
+    response = requests.get('http://127.0.0.1:8000/api/productos/')   
+    response2 = requests.get('https://rickandmortyapi.com/api/character/')
+    response3 = request.get('https://mindicador.cl/api/dolar')
+
+
+    #productoAll = Producto.objects.order_by('?')[:8]
+    #producto3 = Producto.objects.order_by('?')[:3]
+
+    data = response.json()
+    aux = response2.json()
+    data3 = response3.json()
+
+    #data3 = response.json()
+
+    personajes = aux['results']
+
+    data = {
+        'listado': data,
+        #'listado3': data3,
+        'personajes': personajes
+        
+    }
+    
+  
+>>>>>>> main
     return render(request, 'core/indexapi.html', data)
 
 
@@ -95,7 +133,11 @@ def base(request):
     }
     return render(request, 'core/base.html', context)
 
+<<<<<<< HEAD
 @grupo_requerido('Administrador')
+=======
+
+>>>>>>> main
 def add(request):
     page = request.GET.get('page', 1)
     data = {
@@ -135,7 +177,11 @@ def delate(request, id):
 def nosotros(request):
     return render(request, 'core/about.html')
 
+<<<<<<< HEAD
 @grupo_requerido('Cliente')
+=======
+@login_required
+>>>>>>> main
 def carrito(request):
     carrito = Carrito.objects.filter(usuario=request.user)
     codigo_cupon = None
@@ -179,11 +225,19 @@ def carrito(request):
         'sub_total': sub_total,
         'descuento': total_descuento,
         'codigo_cupon': codigo_cupon,
+<<<<<<< HEAD
+=======
+        
+>>>>>>> main
     }
 
     return render(request, 'core/cart.html', data)
 
+<<<<<<< HEAD
 @grupo_requerido('Cliente')
+=======
+@login_required
+>>>>>>> main
 def agregar(request, id):
     if request.method == 'POST':
         cantidad = int(request.POST.get('cantidad', 1))
@@ -202,13 +256,21 @@ def agregar(request, id):
             messages.success(request, 'Producto guardado')
 
     return redirect(request.META.get('HTTP_REFERER') or 'index')
+<<<<<<< HEAD
 @grupo_requerido('Cliente')
+=======
+@login_required
+>>>>>>> main
 def eliminar (request, id):
 
     carrito = Carrito.objects.get(id=id)
     carrito.delete()
     return redirect('carrito')
+<<<<<<< HEAD
 @grupo_requerido('Cliente')
+=======
+@login_required
+>>>>>>> main
 def actualizar(request, id):
     if request.method == 'POST':
         nueva_cantidad = request.POST.get('cantidad')
@@ -217,7 +279,11 @@ def actualizar(request, id):
         item.save()
         # Puedes agregar mensajes flash o redirigir a otra página después de la actualización
     return redirect('carrito')
+<<<<<<< HEAD
 @grupo_requerido('Cliente')
+=======
+@login_required
+>>>>>>> main
 def pago(request, codigo_cupon=None):
     if request.method == 'POST':
         carrito = Carrito.objects.filter(usuario=request.user)
@@ -272,24 +338,35 @@ def pago(request, codigo_cupon=None):
         descuento_cupon = round(total_general * (cupon.descuento / 100))
         total_descuento += descuento_cupon
         total_general -= descuento_cupon
+<<<<<<< HEAD
     response = requests.get('https://mindicador.cl/api/dolar')
     monedas = response.json()
     valor_dolar = monedas['serie'][0]['valor']#valor del dolar actual
     valor_dolar=round(valor_dolar,2)
     valor=round(total_general/valor_dolar,2)
+=======
+>>>>>>> main
 
     data = {
         'carrito': carrito,
         'total_general': total_general,
         'sub_total': sub_total,
         'descuento': total_descuento,
+<<<<<<< HEAD
         'codigo_cupon': codigo_cupon,
         'valor': valor
+=======
+        'codigo_cupon': codigo_cupon
+>>>>>>> main
     }
 
     return render(request, 'core/checkout.html', data)
 
+<<<<<<< HEAD
 @grupo_requerido('Cliente')
+=======
+@login_required
+>>>>>>> main
 def seguimiento(request):
     return render(request, 'core/seguimiento.html')
 
@@ -331,7 +408,11 @@ def productos(request):
 
     
     return render(request, 'core/shop.html', data)
+<<<<<<< HEAD
 @grupo_requerido('Cliente')
+=======
+@login_required
+>>>>>>> main
 def historial(request):
     compras = Historial.objects.filter(usuario=request.user)
     data = {
@@ -343,11 +424,16 @@ def historial(request):
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
+<<<<<<< HEAD
         
         if form.is_valid():
             user = form.save()  # Guardar el usuario registrado
             grupo = Group.objects.get(name='Cliente')
             user.groups.add(grupo)
+=======
+        if form.is_valid():
+            user = form.save()  # Guardar el usuario registrado
+>>>>>>> main
             suscriptor = Suscriptor(user=user)  # Crear un objeto Suscriptor con el usuario
             suscriptor.save()  # Guardar el objeto Suscriptor en la base de datos
             return redirect('login')  # Redirige al inicio de sesión después del registro exitoso
@@ -414,7 +500,11 @@ def contacto(request):
         form = ContactForm()
     return render(request, 'core/contact-us.html', {'form': form})
 
+<<<<<<< HEAD
 @grupo_requerido('Administrador')
+=======
+
+>>>>>>> main
 def crear_cupon(request):
     if request.method == 'POST':
         form = CuponForm(request.POST)
@@ -426,7 +516,10 @@ def crear_cupon(request):
     
     return render(request, 'core/crear_cupon.html', {'form': form})
 
+<<<<<<< HEAD
 @grupo_requerido('Administrador')
+=======
+>>>>>>> main
 def lista_cupones(request):
     cupones = Cupon.objects.all()
     return render(request, 'core/lista_cupones.html', {'cupones': cupones})

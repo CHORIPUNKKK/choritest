@@ -5,9 +5,12 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register('productos', ProductoViewset)
 router.register('tipo_productos', TipoProductoViewset)
+<<<<<<< HEAD
 router.register('Cupon', CuponViewset)
 router.register('User', UserViewset)
 
+=======
+>>>>>>> main
 
 
 urlpatterns = [

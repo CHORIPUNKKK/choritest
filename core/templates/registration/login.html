@@ -10,6 +10,7 @@ background: #55d182;
   /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(to right, #24943e, #61a8e6);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+<<<<<<< HEAD
   background: linear-gradient(to right, #28a745, #28a745, #a6ff00);
 }
 </style>
@@ -34,12 +35,19 @@ background: #55d182;
 
 </style>
 
+=======
+  background: linear-gradient(to right, #24943e, #61a8e6);
+}
+</style>
+
+>>>>>>> main
 {% endblock %}
 {% block contenido %}
 <section class="vh-100 gradient-custom">
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-9 col-lg-6 col-xl-5">
+<<<<<<< HEAD
           <img src="{% static 'core/images/image.png' %}"
             class="img-fluid" alt="Sample image">
         </div>
@@ -57,6 +65,32 @@ background: #55d182;
             <p class="text-center text-muted mt-5 mb-0">Se kiere registrar papito? <a href="{% url 'register' %}"
               class="fw-bold text-body"><u>Registrate aqui</u></a>
             </p> 
+=======
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form method="post">
+            {% csrf_token %}
+            {{form| crispy  }}
+
+
+  
+            
+  
+
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <input type="submit" value="Login" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
+    
+            </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <a class="btn btn-primary btn-lg" href="{% url 'register' %}"
+                style="padding-left: 1.5rem; padding-right: 1.5rem;">Register</a>
+    
+            </div>
+>>>>>>> main
             
   
           </form>

@@ -162,6 +162,7 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 LOGIN_REDIRECT_URL ='/'
 LOGOUT_REDIRECT_URL ='/'
 DATETIME_FORMAT = 'Y-m-d H:i:s'
+<<<<<<< HEAD
 
 
 JAZZMIN_SETTINGS = {
@@ -223,3 +224,5 @@ JAZZMIN_SETTINGS = {
         "auth.group": "vertical_tabs",
     },
 }
+=======
+>>>>>>> main

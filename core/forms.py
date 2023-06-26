@@ -31,6 +31,7 @@ class RegistrationForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 class UserEditForm(forms.ModelForm):
+<<<<<<< HEAD
     donacion = forms.DecimalField(
         label='Donación',
         min_value=1000,
@@ -41,6 +42,13 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name', 'donacion']
+=======
+    donacion = forms.DecimalField(label='Donación', min_value=1000, required=False)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name','donacion']
+>>>>>>> main
 
 class ContactForm(forms.ModelForm):
     class Meta:

@@ -14,6 +14,7 @@ class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model= Producto
         fields= '__all__'
+<<<<<<< HEAD
 
 class CuponSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,3 +25,5 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model= User
         fields= '__all__'        
+=======
+>>>>>>> main

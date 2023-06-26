@@ -7,7 +7,11 @@
 {% block contenido %}
 
     <!-- Start Cart  -->
+<<<<<<< HEAD
     <form action="{% url 'pago' %}" id="FormularioOP" method="post" >
+=======
+    <form action="{% url 'pago' %}" method="post" >
+>>>>>>> main
         {% csrf_token %}
     <div class="cart-box-main">
         <div class="container">
@@ -47,12 +51,31 @@
                                     <label for="country">País *</label>
                                     <select class="wide w-100" id="country">
                                     <option value="Choose..." data-display="Seleccionar">Seleccionar...</option>
+<<<<<<< HEAD
                                     <option value="Chile">Chile</option>
                                     <option value="Peruvian">Peruvian</option>
                                     <option value="Estados Unidos">Estados Unidos</option>
                                 </select>
                                     <div class="invalid-feedback"> Por favor, selecciona un país válido. </div>
                                 </div>
+=======
+                                    <option value="Estados Unidos">Estados Unidos</option>
+                                    <option value="Estados Unidos">PERUUUANOOOOOO</option>
+                                    <option value="Estados Unidos">Colo colo</option>
+                                </select>
+                                    <div class="invalid-feedback"> Por favor, selecciona un país válido. </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="state">Estado *</label>
+                                    <select class="wide w-100" id="state">
+                                    <option data-display="Seleccionar">Seleccionar...</option>
+                                    <option>California</option>
+                                    <option>Tacna</option>
+                                    <option>GB</option>
+                                </select>
+                                    <div class="invalid-feedback"> Por favor, ingresa un estado válido. </div>
+                                </div>
+>>>>>>> main
                                 <div class="col-md-3 mb-3">
                                     <label for="zip">Código postal *</label>
                                     <input type="text" class="form-control" id="zip" placeholder="" required>
@@ -61,12 +84,62 @@
                             </div>
                             <hr class="mb-4">
                             <div class="custom-control custom-checkbox">
+<<<<<<< HEAD
                                 <input type="checkbox" class="custom-control-input" id="save-info">
                                 <label class="custom-control-label" for="save-info">Guardar esta información para la próxima vez</label>
                             </div>
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
+=======
+                                <input type="checkbox" class="custom-control-input" id="same-address">
+                                <label class="custom-control-label" for="same-address">La dirección de envío es la misma que la dirección de facturación</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="save-info">
+                                <label class="custom-control-label" for="save-info">Guardar esta información para la próxima vez</label>
+                            </div>
+                            <hr class="mb-4">
+                            <div class="title"> <span>Pago</span> </div>
+                            <div class="d-block my-3">
+                                <div class="custom-control custom-radio">
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                    <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="debit">Tarjeta de débito</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="paypal">Paypal</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-name">Nombre en la tarjeta</label>
+                                    <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Nombre completo tal como aparece en la tarjeta</small>
+                                    <div class="invalid-feedback"> Se requiere el nombre en la tarjeta </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-number">Número de tarjeta de crédito</label>
+                                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                    <div class="invalid-feedback"> Se requiere el número de tarjeta de crédito </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration">Vencimiento</label>
+                                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                    <div class="invalid-feedback"> Se requiere la fecha de vencimiento </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration">CVV</label>
+                                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                    <div class="invalid-feedback"> Se requiere el código de seguridad </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+>>>>>>> main
                                     <div class="payment-icon">
                                         <ul>
                                             <li><img class="img-fluid" src="{% static 'core/images/payment-icon/1.png' %}" alt=""></li>
@@ -134,11 +207,19 @@
                                 </div>
                                 <hr class="my-1">
                                 <div class="d-flex">
+<<<<<<< HEAD
+=======
+                                    <h4>Subtotal</h4>
+                                    <div class="ml-auto font-weight-bold"> ${{sub_total|intcomma}} </div>
+                                </div>
+                                <div class="d-flex">
+>>>>>>> main
                                     <h4>Descuento</h4>
                                     <div class="ml-auto font-weight-bold"> ${{descuento|intcomma}} </div>
                                 </div>
                                 <hr class="my-1">
                                 <div class="d-flex">
+<<<<<<< HEAD
                                     <h4>Costo de envío</h4>
                                     <div class="ml-auto font-weight-bold shipping-cost"></div>
                                   </div>
@@ -156,6 +237,41 @@
                                 </div>
                         </div>
                         
+=======
+                                    <h4>Descuento de cupón</h4>
+                                    <div class="ml-auto font-weight-bold"> $ 10 </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>Impuestos</h4>
+                                    <div class="ml-auto font-weight-bold"> $ 2 </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>Costo de envío</h4>
+                                    <div class="ml-auto font-weight-bold"> Gratis </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex gr-total">
+                                    <h5>Total general</h5>
+                                    <div class="ml-auto h5"> ${{total_general|intcomma}} </div>
+                                </div>
+                                <hr>
+                                </div>
+                                 <p><div id="btnPaypal"></div></p>
+
+
+                                 <!--<form action="https://www.paypalobjects.com/api/checkout.js" method="post" target="_blank">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="TU_ID_DE_BOTÓN">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                  </form>-->
+                        </div>
+                        <div class="cart-and-bay-btn">
+                            
+                            <button type="submit" class="ml-auto btn hvr-hover" data-fancybox-close="" href="#">Pagar</button>
+                            <p><div id="btnPaypal"></div></p>
+                        </div>
+>>>>>>> main
                     </div>
                 </div>
             </div>
@@ -204,9 +320,13 @@
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Confirmar'
                     })
+<<<<<<< HEAD
                     document.getElementById('FormularioOP').submit();
                 });	
                 
+=======
+                });	
+>>>>>>> main
             },
             onCancel(data) {
                 Swal.fire({
@@ -233,6 +353,7 @@
         }, '#btnPaypal');
     </script>
 
+<<<<<<< HEAD
     <script>
         $(document).ready(function() {
   var defaultOption = $('input[name="shipping-option"]:checked');
@@ -251,4 +372,6 @@
 
     </script>
 
+=======
+>>>>>>> main
     {% endblock %}

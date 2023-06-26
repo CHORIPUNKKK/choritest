@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block css %}
+<<<<<<< HEAD
 <style>
     .cupones-container {
         display: flex;
@@ -91,3 +92,32 @@
 
 {% block js %}
 {% endblock %}
+=======
+
+
+{% endblock %}
+{% block contenido %}
+<ul class="cupones-lista">
+    {% for cupon in cupones %}
+      <li class="cupon-item">
+        <div class="cupon-codigo">{{ cupon.codigo }}</div>
+        <div class="cupon-descuento">{{ cupon.descuento }}</div>
+        <div class="cupon-opciones">
+          <a href="{% url 'actualizar_cupon' cupon.id %}">Modificar</a>
+          <a onclick="eliminarCupones({{cupon.id}})" class="jijija">Eliminar</a>
+        </div>
+      </li>
+    {% empty %}
+      <li class="cupon-item empty">No hay cupones disponibles.</li>
+    {% endfor %}
+  </ul>
+  
+
+{% endblock %}
+{% block js %}
+
+
+
+  
+{% endblock %}
+>>>>>>> main

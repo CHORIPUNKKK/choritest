@@ -63,14 +63,22 @@
     <!-- Start Main Top -->
     <header class="main-header">
         <!-- Start Navigation -->
+<<<<<<< HEAD
         <nav class="navbar navbar-expand-lg navbar-light bg-success navbar-default bootsnav" style="background-image: linear-gradient(to right, #28a745, #28a745, #a6ff00);">
+=======
+        <nav class="navbar navbar-expand-lg navbar-light bg-success navbar-default bootsnav">
+>>>>>>> main
             <div class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
+<<<<<<< HEAD
                     <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'core/images/js.png' %}" class="logo" alt=""></a>
+=======
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'core/images/logoweb.png' %}" class="logo" alt=""></a>
+>>>>>>> main
                 </div>
                 <!-- End Header Navigation -->
                 
@@ -86,7 +94,12 @@
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown">productos</a>
                             <ul class="dropdown-menu">
+<<<<<<< HEAD
 								<li><a href="{% url 'productos' %}">Productos</a></li>                          
+=======
+								<li><a href="{% url 'productos' %}">Productos</a></li>
+                                <li><a href="{% url 'carrito' %}">Carrito</a></li>                            
+>>>>>>> main
                                 <li><a href="{% url 'seguimiento' %}">Seguimiento</a></li>
 
                                 <!--ADMIN-->
@@ -107,6 +120,10 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{% url 'edit' %}">Editar mi Perfil</a>
                                 <a class="dropdown-item" href="{% url 'historial' %}">Historial de Compras</a>
+<<<<<<< HEAD
+=======
+                                <a class="dropdown-item" href="{% url 'pago' %}">Administracion de Pago</a>
+>>>>>>> main
                                 <!-- Agrega aquí más elementos del menú desplegable si es necesario -->
                             </div>
                         </li>
@@ -131,12 +148,21 @@
                                     </a>
                                 </li>
                                 <li class="side-menu">
+<<<<<<< HEAD
                                     <a href="{% url 'carrito' %}">
                                         <i class="fa fa-shopping-bag animate__animated animate__bounce"></i>
                                         <p>My Cart</p>
                                     </a>
                                 </li>
                                
+=======
+                                    <a href="">
+                                        <i class="fa fa-shopping-bag animate__animated animate__bounce"></i>
+                                        <span class="badge">{{ total_productos }}</span>
+                                        <p>My Cart</p>
+                                    </a>
+                                </li>                                
+>>>>>>> main
   
                                 {% else %}
                                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-user-circle fa-lg"></i>
@@ -233,6 +259,7 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-widget">
                             <h4>Acerca Del Jardin Del Seajalol</h4>
+<<<<<<< HEAD
                             <p>Con La Giuseppe te tapizo
                                 Cara' to'a la' teni' que yo piso
                                 Voy pa' la cima porque Dio' lo quiso
@@ -248,6 +275,10 @@
                                 Yo no doblo ni plancho pantalón
                                 Y aunque me pegue, me haga millonario no voy a
                                 Olvidar que soy de población</p>
+=======
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+>>>>>>> main
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
@@ -307,7 +338,11 @@
     
     
     <!-- ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRR -->
+<<<<<<< HEAD
      <!--<script src="{% static 'core/js/bootsnav.js' %}"></script>-->
+=======
+     <script src="{% static 'core/js/bootsnav.js' %}"></script>
+>>>>>>> main
 
     <script src="{% static 'core/js/images-loded.min.js' %}"></script>
     <script src="{% static 'core/js/isotope.min.js' %}"></script>

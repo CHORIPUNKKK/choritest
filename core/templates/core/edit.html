@@ -47,6 +47,7 @@
     cursor: pointer;
     border: solid 1px #00FF00;
 }
+<<<<<<< HEAD
 .donacion-field {
   background-color: #f7f7f7;
   border: 2px solid #07ff07;
@@ -101,6 +102,9 @@
   .custom-link {
   font-size: 18px; /* Ajusta el tamaño de fuente según tus necesidades */
 }
+=======
+
+>>>>>>> main
 </style>
 
 {% endblock %}
@@ -116,24 +120,33 @@
           <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
           <span class="font-weight-bold">{{ user.username }}</span>
           <span class="text-black-50">{{ user.email }}</span>
+<<<<<<< HEAD
           
           <div class="pt-5 custom-link-wrapper">
             <h6 class="mb-0 custom-link"><a href="{% url 'index' %}" class="text-body"><i
                   class="fas fa-long-arrow-alt-left me-2"></i>Volver al Inicio</a></h6>
           </div>
+=======
+          <span> </span>
+>>>>>>> main
         </div>
         
       </div>
       <div class="col-md-5 border-right">
           <div class="p-3 py-5">
               <div class="d-flex justify-content-between align-items-center mb-3">
+<<<<<<< HEAD
                   <h4 class="text-right">Editar mi Perfil</h4>
+=======
+                  <h4 class="text-right">Profile Settings</h4>
+>>>>>>> main
               </div>
               <div class="row mt-3">
                 <form method="post">
                   {% csrf_token %}
                   {{ form | crispy }}
               </div>
+<<<<<<< HEAD
               <p>Para acceder a nuestros beneficios de suscripción asegurese de donar desde 1000, gracias por su cooperacion y apoyo.</p>
               <div class="mt-5 text-center">
                 <button type="submit" class="custom-button">Save Profile</button>
@@ -146,6 +159,15 @@
 
               
               
+=======
+              <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+              </div>
+
+              <div class="mt-5 text-center">
+                <button onclick="eliminarPerfil()" class="btn btn-danger" type="submit">Eliminar Perfil</button>
+              </div>
+>>>>>>> main
               
               <div class="text-center mt-4">
                 {% if suscriptor.es_suscriptor %}
@@ -156,9 +178,16 @@
                 <h3 class="mt-4">Te haz Suscrito con exito!. Se ha aplicado un descuento del 5% para todas tus compras. Esta será cobrada mensualmente.</h3>
                 <h3>Descuento actual: {{ suscriptor.descuento }}%</h3>
         
+<<<<<<< HEAD
               {% endif %}
               
               </div>
+=======
+        
+              {% endif %}
+              
+          </div>
+>>>>>>> main
       </div>
   </div>
 </div>

@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block css %}
+<<<<<<< HEAD
     <style>
     /* Estilos personalizados */
     .green-gardening-form {
@@ -64,3 +65,22 @@
 {% block js %}
   <script src="{% static 'js/custom-script.js' %}"></script>
 {% endblock %}
+=======
+
+
+{% endblock %}
+{% block contenido %}
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Crear cupón</button>
+  </form>
+
+{% endblock %}
+{% block js %}
+
+
+
+  
+{% endblock %}
+>>>>>>> main
